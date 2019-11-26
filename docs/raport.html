@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Social Network Profile Manager</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,700" rel="stylesheet">
+</head>
+
+<body>
+
+    <h1> SON Raport </h1>
+
+    <div id="toc_container">
+        <ul class="toc_list">
+            <li><a href="#intro">1. Introducere</a></li>
+            <li><a href="#architecture">2. Arhitectura</a></li>
+            <li><a href="#authentification">3. Autentificare</a></li>
+            <li><a href="#database">4. Baza de date</a> </li>
+            <li><a href="#externalApi">5. API-uri externe</a> </li>
+        </ul>
+    </div>
+
+
+    <section id="intro">
+        <h2> 1. Introducere </h2>
+        <p>
+            SON reprezinta o aplicatie de tip Web care permite cautarea de profile de utilizatori de pe diverse site-uri sociale in vederea realizarii si vizualizarii grafului retelei sociale a unui anumit utilizator. 
+        </p>
+        <p>
+            De asemenea, se ofera si posibilitatea de cautare avansata pe baza unor criterii multiple(nume, varsta, localizare, etc.) cat si sugerarea adaugarii utilizatorilor bazate pe relatiile curente de prietenie.
+        </p>
+    </section>
+
+    <section id="architecture">
+        <h2> 2. Arhitectura </h2>
+        <p> Arhitectura de tip MVC.
+        </p>
+        <ol>
+            <li>Utilizatorul intra in aplicatie si se poate inregistra</li>
+            <li>Utilizatorul intra in aplicatie si se poate loga
+                <ol type="a">
+                    <li>Are acces la dashboard</li>
+                    <li>Poate sa isi adauge conturi de pe diverse platforme sociale</li>
+                    <li>Poate sa adauge prieteni de pe alte platforme sociale</li>
+                    <li>Poate sa vada graful FOAF (Friend Of A Friend)</li>
+                    <li>Poate sa vada lista prietenilor</li>
+                    <li>Poate sa aplice diverse filtre pentru o cautare avansata</li>
+                    <li>Poate sa se delogheze</li>
+
+                </ol>
+            </li>
+        </ol>
+        <img src="diag1.png" alt="diag1" width="800"> <br>
+        <img src="diag2.png" alt="diag2" width="800">
+    </section>
+
+    <section id="authentification">
+        <h2> 3. Autentificare </h2>
+        <p>Userul introduce email-ul si parola si daca sunt valide, se returneaza un JWT Token prin cookie, folosit
+            pentru a accesa contul si lista de prieteni.
+        </p>
+
+        <p>
+            JWT reprezinta un mod de a transmite in mod sigur informatiile intre partile componente sub forma unui
+            obiect JSON. Informatiile pot fi verificate cu ajutorul unei semnaturi digitale, pe baza unor perechi de
+            id-uri(keys). <br> 
+            Astfel, putem fi siguri ca utilizatorul care detine cheia privata este cel de la care dorim sa
+            primim informatiile. JWT este folositor in momentul in care dorim sa oferim anumite drepturi utilizatorului
+            de a accesa anumite servicii si resurse care ii sunt permise folosind un token.
+
+        </p>
+
+        <ol>Motivatie: 
+            <li> indicat de utilizat impreuna cu HTML si HTTP </li>
+            <li> folosirea XML cu XML Digital Signature fara a avea probleme de securitate este destul de dificila in
+                comparatie cu simplitatea oferita de JSON </li>
+            <li> XML nu are document-to-object mapping, de care avem nevoie avand in vedere faptul ca folosim MongoDB
+            </li>
+        </ol>
+        <img src="jwt.png" alt="jwt" width="700">   
+
+    </section>
+
+    <section id="database">
+        <h2> 4. Baza de date </h2>
+        <p> MongoDB </p>
+        <ol> Motivatie:
+            <li> Stocheaza obiecte(documente) in loc de tabele, datele fiind organizate sub forma de documente JSON cu
+                scheme dinamice</li>
+            <li> Este eliminata nevoia de join dintre tabele</li>
+            <li> Indexarea se face asupra cheilor de regasire ale documentelor</li>
+            <li> Citirile si scrierille sunt distribuite pe partitii, iar lipsa joinurilor face ca interogarile
+                distribuite sa fie rapide</li>
+            <li> Poate stoca fisiere de dimensiuni mari fara a complica stiva de date</li>
+            <li> Exista o cantitate mare de resurse pentru a asimila rapid lucrul cu MongoDB</li>
+            <li> Are suport pentru node.js </li>
+
+        </ol>
+        <img src="db.png" alt="database" width="900">
+    </section>
+
+    <section id="externalApi">
+    <h2> 5. API-uri externe </h2>
+        <p>    Google Maps API - pentru filtrarea dupa localizare si geolocatie</p>
+        <p>    Facebook Graph API (pentru Facebook si Instagram) - exista posibilitatea sa nu il putem folosi din cauza ca anumite caracterestici sunt doar pentru Faceebooks Devs</p>
+        <img src="fb.png" alt="jwt" width="500">  
+        <p>    <a href="https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/overview">Twitter API</a></p></p>
+        <p>    <a href="https://www.last.fm/api/show/user.getFriends">Last.fm API</a></p>
+        <p>    <a href="https://www.last.fm/api/show/user.getFriends">LinkedIn API</a></p>
+        <p>    <a href="https://developers.pinterest.com/docs/api/users/">Pinterest API</a></p>
+        <p>    <a href="https://www.behance.net/dev/api/endpoints/2#users-get-59">Behance API</a></p>
+        <p>    <a href="https://developer.github.com/v3/users/#get-all-users">GitHub API</a></p>
+        <p>    <a href="https://www.tumblr.com/docs/en/api/v2#userfollowing--retrieve-the-blogs-a-user-is-following">Tumblr API</a></p>
+        <p>    <a href="https://discordapp.com/developers/docs/resources/user">Discord API</a></p>
+        
+    </section>
+
+    <section>
+        <h2> Autori:</h2>
+        <p> Asoltanei Cristian </p>
+        <p> Calarasu Teodora-Catalina </p>
+        <p> Tesu Cristina </p>
+    </section>
+
+</body>
+
+</html>
