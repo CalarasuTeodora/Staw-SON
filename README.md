@@ -2,5 +2,5 @@
 Staw-- Son project
 
 
-cd son
+cd son  
 npm install
