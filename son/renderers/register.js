@@ -45,6 +45,7 @@ module.exports = function(data) {
                 </div>
     
                 <button type="submit" class="button">Sign Up</button>
+                <p id="errorMessages"></p>
     
             </form>
             <p>You already have an account? </p> 

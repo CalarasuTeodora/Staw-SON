@@ -37,7 +37,8 @@ const userSchema = new Schema({
   },
   hobbies: [
       {
-          type: String
+          type: String,
+          default: []
       }
   ]
 });
