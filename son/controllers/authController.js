@@ -3,24 +3,29 @@ const registerRenderer = require('../renderers/register');
 const loginRenderer = require('../renderers/login');
 
 exports.loginPage = function(req,res) {
-    let data = {};
-    let htmlPage = loginRenderer(data);
-    res.type('.html');
-    res.send(htmlPage);
+    if(req.isAuth) {
+        res.redirect('/');
+    }
+    else {
+        let data = {};
+        let htmlPage = loginRenderer(data);
+        res.type('.html');
+        res.send(htmlPage);
+    }
 }
 
-exports.loginData = function(req,res) {
-    let data = {};
-    let htmlPage = loginRenderer(data);
-    res.type('.html');
-    res.send(htmlPage);
-}
+
 
 exports.registerPage = function(req,res) {
-    let data = {};
-    let htmlPage = registerRenderer(data);
-    res.type('.html');
-    res.send(htmlPage);
+    if(req.isAuth) {
+        res.redirect('/');
+    }
+    else {
+        let data = {};
+        let htmlPage = registerRenderer(data);
+        res.type('.html');
+        res.send(htmlPage);
+    }
 }
 
 exports.registerData = function(req,res) {

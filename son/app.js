@@ -7,9 +7,11 @@ const registerRouter = require('./routes/register');
 const indexRouter = require('./routes/index');
 const apiRouter = require('./api/routes/merge')
 const cookieParser = require('cookie-parser');
+const isAuth = require('./middleware/isAuth');
 const app = express();
 
 app.use(cookieParser());
+app.use(isAuth);
 app.use(formidableMiddleware());
 
 let serv;
