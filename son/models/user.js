@@ -7,25 +7,23 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  username: {
+    type: String,
+  },
   firstname: {
     type: String,
-    required: true
   },
   lastname: {
     type: String,
-    required: true
   },
   password: {
     type: String,
-    required: true
   },
   country: {
       type: String,
-      required: true
   },
   age: {
       type: Number,
-      requried: true
   },
   friends: [
     {

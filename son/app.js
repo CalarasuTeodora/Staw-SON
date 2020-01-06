@@ -1,18 +1,22 @@
 const path = require('path');
 const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
-const authRouter = require('./routes/auth');
+const formidableMiddleware = require('express-formidable');
+const loginRouter = require('./routes/login');
+const registerRouter = require('./routes/register');
 const indexRouter = require('./routes/index');
+const apiRouter = require('./api/routes/merge')
 const app = express();
 
 
-app.use(bodyParser.json());
+app.use(formidableMiddleware());
 
 let serv;
 app.use('/',indexRouter);
+app.use('/api',apiRouter);
 app.use('/static',express.static(path.join(__dirname,'public')));
-app.use('/login',authRouter);
+app.use('/login',loginRouter);
+app.use('/register',registerRouter);
 
 
 mongoose.connect('mongodb://localhost:27017/son_db',{ useNewUrlParser: true, useUnifiedTopology: true})
