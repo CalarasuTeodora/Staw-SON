@@ -6,9 +6,10 @@ const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
 const indexRouter = require('./routes/index');
 const apiRouter = require('./api/routes/merge')
+const cookieParser = require('cookie-parser');
 const app = express();
 
-
+app.use(cookieParser());
 app.use(formidableMiddleware());
 
 let serv;

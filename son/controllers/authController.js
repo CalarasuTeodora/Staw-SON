@@ -1,15 +1,19 @@
 //const User = require('../models/user')
 const registerRenderer = require('../renderers/register');
+const loginRenderer = require('../renderers/login');
 
 exports.loginPage = function(req,res) {
-    res.set('Content-Type','text/html');
-    res.status(200);
-    res.send(`Pagina login`);
+    let data = {};
+    let htmlPage = loginRenderer(data);
+    res.type('.html');
+    res.send(htmlPage);
 }
 
 exports.loginData = function(req,res) {
-    res.status(200);
-    res.send('Pagina date login!');
+    let data = {};
+    let htmlPage = loginRenderer(data);
+    res.type('.html');
+    res.send(htmlPage);
 }
 
 exports.registerPage = function(req,res) {
