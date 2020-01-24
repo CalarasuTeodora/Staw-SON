@@ -3,6 +3,7 @@ const router = express.Router();
 
 router.get('/',function(req,res) {
     if(req.isAuth) {
+        console.log(req.user)
         res.send(req.userId);
     }
     else {

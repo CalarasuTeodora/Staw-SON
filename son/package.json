@@ -12,10 +12,20 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-formidable": "^1.2.0",
+    "express-session": "^1.17.0",
     "express-validator": "^6.3.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.8.4"
+    "lastfmapi": "^0.1.1",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.8.4",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "passport-lastfm": "^1.0.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5"
   }
 }
