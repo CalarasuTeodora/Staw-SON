@@ -12,6 +12,10 @@ router.get('/lastfm/return', linkedController.lastFMReturn);
 router.get('/lastfm/info', linkedController.lastFMInfo);
 
 
+router.get('/twitter/login', linkedController.twitterLogin);
+router.get('/twitter/return', linkedController.twitterReturn);
+router.get('/twitter/info', linkedController.twitterInfo);
+
 
 
 module.exports = router;

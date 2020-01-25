@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config();
 var LastFMStrategy = require('passport-lastfm')
-
+var twitterStrategy = require('passport-twitter')
 const formidableMiddleware = require('express-formidable');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
@@ -16,6 +16,19 @@ const app = express();
 
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
+
+
+passport.use(new twitterStrategy({
+  consumerKey: process.env.TWITTER_CONSUMER_KEY,
+  consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+  callbackURL: "http://localhost:3000/linked/twitter/return"
+},
+function(token, tokenSecret, profile, cb) {
+    
+    return cb(null, profile); }
+  ));
+
+
 
 passport.use(new LastFMStrategy({
     api_key: process.env.LASTFM_KEY,
@@ -69,7 +82,7 @@ app.use('/register',registerRouter);
 
 
 
-mongoose.connect('mongodb://localhost:27017/son_db',{ useFindAndModify: false ,useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb://localhost:27017/son_db',{ useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
     serv = app.listen(3000);
     console.log('Listening to port 3000');
