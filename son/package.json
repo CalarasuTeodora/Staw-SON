@@ -29,6 +29,7 @@
     "passport-lastfm": "^1.0.1",
     "passport-twitter": "^1.0.4",
     "request": "^2.88.0",
-    "request-promise": "^4.2.5"
+    "request-promise": "^4.2.5",
+    "twitter": "^1.7.1"
   }
 }
