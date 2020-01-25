@@ -69,7 +69,7 @@ app.use('/register',registerRouter);
 
 
 
-mongoose.connect('mongodb://localhost:27017/son_db',{ useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb://localhost:27017/son_db',{ useFindAndModify: false ,useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
     serv = app.listen(3000);
     console.log('Listening to port 3000');

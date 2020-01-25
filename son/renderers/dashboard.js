@@ -1,10 +1,13 @@
-module.exports = function(data) {return `<!DOCTYPE html>
+module.exports = function(data) {
+    
+    
+    return `<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="icon/flaticon.css">
     
@@ -12,8 +15,8 @@ module.exports = function(data) {return `<!DOCTYPE html>
 
 <body>
     <div id="menu" class="menu">
-        <img src='img/soraka.png'>
-        <h2>Soraka Main Boyy</h2>
+        <img src='/static/img/soraka.png'>
+        <h2>${data.userId}</h2>
         <i class="flaticon-social-media"></i>
         <i class="flaticon-instagram"></i>
         <i class="flaticon-linkedin"></i>
@@ -39,7 +42,7 @@ module.exports = function(data) {return `<!DOCTYPE html>
     </div>
 
     <div id="content">
-        <img src="img/logo.svg" id="logo">
+        <img src="/static/img/logo.svg" id="logo">
         <h2><span id="msg">Welcome back, Soraka Main Boyy!</span></h2>
         <div id="graphs">
             <div class="graph">

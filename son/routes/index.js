@@ -1,14 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const indexController = require('../controllers/indexController');
 
-router.get('/',function(req,res) {
-    if(req.isAuth) {
-        console.log(req.user)
-        res.send(req.userId);
-    }
-    else {
-        res.redirect('/login');
-    }
-});
+
+router.get('/',indexController.dashboardPage);
 
 module.exports = router;

@@ -38,7 +38,7 @@ module.exports = function(data) {
             <h3>or connect with</h3>
     
             <div id="buttonLogin">
-                <button class="buttonLogin">Facebook</button>
+                <button class="buttonLogin" onclick="location.href='/linked/fb/login';">Facebook</button>
                 <button class="buttonLogin">Insta</button>
                 <button class="buttonLogin">Another1</button>
                 <button class="buttonLogin">Another2</button>

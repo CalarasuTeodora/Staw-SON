@@ -33,7 +33,8 @@ const userSchema = new Schema({
   ],
   accounts: {
     type: Map,
-    of: String
+    of: String,
+    default: {}
   },
   hobbies: [
       {
