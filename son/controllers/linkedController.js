@@ -5,6 +5,25 @@ const User = require('../models/user');
 const Friend = require('../models/friend');
 const jwt = require('jsonwebtoken');
 var Twitter = require('twitter');
+const mongoose = require('mongoose');
+
+
+function addFriendsToUser(user,results) {
+    let friends = user.friends;
+        results.forEach(result => {
+            result = result.id;
+            let found = false;
+            for(let friend of friends) {
+                if (friend.toString()  == result) {
+                    found = true;
+                    break;
+                }
+            }
+            if(!found) {
+                user.friends.push(result);
+            }
+        });
+}
 
 async function syncTwitter(userId, twitterUser, twitterData) {
     try {
@@ -26,24 +45,7 @@ async function syncTwitter(userId, twitterUser, twitterData) {
                 new: true
             });
         }))
-        console.log(user.friends);
-
-        ///// NEEDS FIXING
-        let friends = user.friends;
-        results.forEach(result => {
-            result = result.id;
-            let found = false;
-            for(let friend of friends) {
-                console.log(friend.id.toString());
-                if (friend.id.toString() == result) {
-                    found = true;
-                    break;
-                }
-            }
-            if(!found) {
-                user.friends.push(result);
-            }
-        });
+        addFriendsToUser(user,results);
         user.save();
     } catch (e) {
         console.log(e);
@@ -154,7 +156,7 @@ async function syncFB(user, fbData) {
                 new: true
             });
         }))
-        user.friends = [...new Set(user.friends.concat(results.map(result => result.id)))];
+        addFriendsToUser(user, results);
         user.save();
     } catch (e) {
         console.log(e);
