@@ -15,6 +15,9 @@ const friendSchema = new Schema({
   country: {
       type: String,
   },
+  url: {
+    type: String,
+  },
   age: {
       type: Number,
   },

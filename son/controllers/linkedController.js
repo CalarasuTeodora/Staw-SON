@@ -85,6 +85,33 @@ exports.twitterInfo = function (req, res) {
     res.redirect('/');
 }
 
+async function syncLastFM(userId, lastFMUser, lastFMData) {
+    try {
+        const user = await User.findById(userId);
+        user.accounts.set('lastfm', lastFMUser.name);
+        const results = await Promise.all(lastFMData.map(friend => {
+            return Friend.findOneAndUpdate({
+                userId: user.id,
+                network: 'lastfm',
+                email: friend.name
+            }, {
+                userId: user.id,
+                network: 'lastfm',
+                email: friend.name,
+                firstname: friend.realname
+            }, {
+                upsert: true,
+                setDefaultsOnInsert: true,
+                new: true
+            });
+        }))
+        addFriendsToUser(user,results);
+        user.save();
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 exports.lastFMLogin = function (req, res, next) {
     if(!req.isAuth) {
         return res.redirect('/login');
@@ -121,16 +148,12 @@ exports.lastFMInfo = function (req, res) {
 
     }, function (err, friends) {
         if (err) {
-            return console.log('Well something went wront here at lastfm', err);
-
+            console.log('Well something went wront here at lastfm', err);
+            return res.redirect('/');
         }
-        console.log(friends);
-        
-        console.log(friends.user.registered)
-        res.json({
-            lastFMFriends: friends,
-            lastFMUserInfo: req.user
-        })
+
+        syncLastFM(req.userId,req.user,friends.user);
+        res.redirect('/');
 
     });
  
