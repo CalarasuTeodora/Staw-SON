@@ -6,14 +6,61 @@ const Friend = require('../models/friend');
 const jwt = require('jsonwebtoken');
 var Twitter = require('twitter');
 
+async function syncTwitter(userId, twitterUser, twitterData) {
+    try {
+        const user = await User.findById(userId);
+        user.accounts.set('twitter', twitterUser.id);
+        const results = await Promise.all(twitterData.map(friend => {
+            return Friend.findOneAndUpdate({
+                userId: user.id,
+                network: 'twitter',
+                email: friend.id
+            }, {
+                userId: user.id,
+                network: 'twitter',
+                email: friend.id,
+                firstname: friend.name
+            }, {
+                upsert: true,
+                setDefaultsOnInsert: true,
+                new: true
+            });
+        }))
+        console.log(user.friends);
+
+        ///// NEEDS FIXING
+        let friends = user.friends;
+        results.forEach(result => {
+            result = result.id;
+            let found = false;
+            for(let friend of friends) {
+                console.log(friend.id.toString());
+                if (friend.id.toString() == result) {
+                    found = true;
+                    break;
+                }
+            }
+            if(!found) {
+                user.friends.push(result);
+            }
+        });
+        user.save();
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 exports.twitterLogin = function (req, res, next) {
+    if(!req.isAuth) {
+        return res.redirect('/login');
+    }
     passport.authenticate('twitter')(req, res, next);
 }
 
 exports.twitterReturn = function (req, res, next) {
     passport.authenticate('twitter', {
         successRedirect: '/linked/twitter/info',
-        failureRedirect: 'error'
+        failureRedirect: '/'
     })(req, res, next)
 }
 
@@ -28,22 +75,25 @@ exports.twitterInfo = function (req, res) {
       var params = {user_id: req.user.id};
       client.get('friends/list.json', params, function(error, tweets, response){
         if (!error) {
-            console.log(tweets)
+            syncTwitter(req.userId, req.user, tweets.users); 
         }
       });
 
 
-    res.json(req.user)
+    res.redirect('/');
 }
 
 exports.lastFMLogin = function (req, res, next) {
+    if(!req.isAuth) {
+        return res.redirect('/login');
+    }
     passport.authenticate('lastfm')(req, res, next);
 }
 
 exports.lastFMReturn = function (req, res, next) {
     passport.authenticate('lastfm', {
         successRedirect: '/linked/lastfm/info',
-        failureRedirect: 'error'
+        failureRedirect: '/'
     })(req, res, next)
 }
 
@@ -87,8 +137,6 @@ exports.lastFMInfo = function (req, res) {
 
 async function syncFB(user, fbData) {
     try {
-        console.log(user);
-        console.log(user.accounts)
         user.accounts.set('facebook', fbData.id);
         const results = await Promise.all(fbData.friends.data.map(friend => {
             return Friend.findOneAndUpdate({
@@ -102,10 +150,11 @@ async function syncFB(user, fbData) {
                 firstname: friend.name
             }, {
                 upsert: true,
-                setDefaultsOnInsert: true
+                setDefaultsOnInsert: true,
+                new: true
             });
         }))
-        user.friends = results.map(result => result.id);
+        user.friends = [...new Set(user.friends.concat(results.map(result => result.id)))];
         user.save();
     } catch (e) {
         console.log(e);
@@ -125,13 +174,14 @@ exports.facebookReturn = function (req, res, next) {
 }
 
 exports.facebookInfo = async function (req, res) {
-    //console.log(req.user);
+    /*
+    console.log(req.user);
     console.log(req.user._json.id);
     console.log(req.user._json.name);
     console.log(req.user._json.picture);
     console.log(req.user._json.email);
     console.log(req.user._json.friends.data) // returneaza numele si id-ul prietenilor
-
+    */
     try {
         const foundUser = await User.findOne({
             email: req.user._json.email
