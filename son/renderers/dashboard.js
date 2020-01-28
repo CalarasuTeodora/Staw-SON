@@ -16,7 +16,7 @@ module.exports = function(data) {
 <body>
     <div id="menu" class="menu">
         <img src='/static/img/soraka.png'>
-        <h2>${data.userId}</h2>
+        <h2>${data.username}</h2>
         <i class="flaticon-social-media"></i>
         <i class="flaticon-instagram"></i>
         <i class="flaticon-linkedin"></i>

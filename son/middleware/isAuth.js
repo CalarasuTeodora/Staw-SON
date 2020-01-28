@@ -22,5 +22,6 @@ module.exports = function(req,res,next) {
     }
     req.isAuth = true;
     req.userId = decodedToken.userId;
+    req.username = decodedToken.username;
     next();
 }

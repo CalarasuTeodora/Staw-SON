@@ -23,7 +23,7 @@ router.post('/loginviaform', (req,res,next) => {
                 if(!isEqual) {
                     throw new Error('Wrong Password!');
                 }
-                const token = jwt.sign({userId: foundUser.id,email: foundUser.email},'cheiedesemnarejonule');
+                const token = jwt.sign({userId: foundUser.id,email: foundUser.email, username:foundUser.username},'cheiedesemnarejonule');
                 res.cookie('authToken',token,{httpOnly: true});
                 res.status(303);
                 res.end();
