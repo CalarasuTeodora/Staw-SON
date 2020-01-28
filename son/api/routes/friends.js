@@ -10,7 +10,8 @@ router.get('/:network', async function(req,res) {
         return res.json({msg: 'Invalid network'});
     }
     try {
-        const foundUser = await User.findById(req.userId);
+        const requestedUserId = req.query.userId || req.userId;
+        const foundUser = await User.findById(requestedUserId);
         const userNetwork = foundUser.accounts.get(network);
 
         const networkFriends = foundUser.populate('friends','email',{network},async function(err,userFriendsId){
