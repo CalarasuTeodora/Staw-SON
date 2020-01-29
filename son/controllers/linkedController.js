@@ -141,7 +141,7 @@ exports.lastFMInfo = function (req, res) {
 
     lfm.setSessionCredentials(mySessionCreds.username, mySessionCreds.key);
 
-
+    
     lfm.user.getFriends({
         user: mySessionCreds.username,
         api_key: process.env.LASTFM_KEY
