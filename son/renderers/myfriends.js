@@ -42,19 +42,14 @@ module.exports = function(data) {
     </div>
 
     <div id="content">
-        <img src="/static/img/logo.svg" id="logo">
-        <h2><span id="msg">Welcome back, Soraka Main Boyy!</span></h2>
-        <div id="graphs">
-            <div class="graph">
-                <div class="graphTab"><h2>Div Title</h2></div>
-                <p>yeee</p>
-            </div>
-            <div class="graph">
-                <div class="graphTab"><h2>Div Title</h2></div>
-                <p>yeee</p>
-            </div>
-        </div>
+        <form id="searchform">
+            <input type="text" name="searchbar" placeholder="Search friends by hobbies, username, social network ..."></input>
+            <input type="checkbox" name="hobbies">Hobbies</input>
+            <input type="checkbox" name="username">Username</input>
+            <input type="checkbox" name="socialnetwork">Social network</input>
+            <input type="submit" value="Search"></input>
+        </form>
     </div>
-
+    <script src="/static/js/myfriends.js" type="application/javascript"></script>
 
 </body>`}
