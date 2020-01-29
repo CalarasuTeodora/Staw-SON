@@ -43,7 +43,7 @@ module.exports = function(data) {
 
     <div id="content">
         <img src="/static/img/logo.svg" id="logo">
-        <h2><span id="msg">Welcome back, Soraka Main Boyy!</span></h2>
+        <h2><span id="msg">Welcome back, ${data.username}!</span></h2>
         <div id="graphs">
             <div class="graph">
                 <div class="graphTab"><h2>Div Title</h2></div>
