@@ -19,6 +19,9 @@ router.get('/myfriends',async function(req,res,next) {
         }
         function filter(friendsData) {
             return friendsData.filter(friendData => {
+                if(!filters.includes('hobbies') && !filters.includes('username')) {
+                    return true;
+                }
                 if(filters.includes('hobbies')) {
                     for(let searchTerm of search) {
                         if(friendData.hobbies.includes(searchTerm)) {
@@ -36,6 +39,7 @@ router.get('/myfriends',async function(req,res,next) {
                 return false;
             })
         }
+
         let fb = filter(results[0].data);
         let tw = filter(results[1].data);
         let lf = filter(results[2].data);
@@ -118,6 +122,7 @@ router.get('/myfriends',async function(req,res,next) {
             userData = userData.filter(user => {
                 for(let net of networkFilters) {
                     if(user.networks[net] != 'friends') {
+                        console.log(user);
                         return false;
                     }
                 }

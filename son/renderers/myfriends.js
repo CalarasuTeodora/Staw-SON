@@ -44,11 +44,14 @@ module.exports = function(data) {
     <div id="content">
         <form id="searchform">
             <input type="text" name="searchbar" placeholder="Search friends by hobbies, username, social network ..."></input>
-            <input type="checkbox" name="hobbies">Hobbies</input>
-            <input type="checkbox" name="username">Username</input>
-            <input type="checkbox" name="socialnetwork">Social network</input>
+            <input type="radio" name="hobbies">Hobbies</input>
+            <input type="radio" name="username">Username</input>
+            <input type="radio" name="socialnetwork">Social network</input>
             <input type="submit" value="Search"></input>
         </form>
+        <div id="friends-content">
+
+        </div>
     </div>
     <script src="/static/js/myfriends.js" type="application/javascript"></script>
 

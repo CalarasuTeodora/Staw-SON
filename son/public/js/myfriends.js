@@ -6,7 +6,6 @@ form.addEventListener('submit',event => {
     const username = form['username'].checked;
     const network = form['socialnetwork'].checked;
     let filters = [];
-    console.log("/" + hobbies + "/");
     if(hobbies) {
         filters.push('hobbies');
     }
@@ -22,11 +21,78 @@ form.addEventListener('submit',event => {
     let url = new URL('http://localhost:3000/api/myfriends');
     let params = {filters,search};
     url.search = new URLSearchParams(params).toString();
-    console.log(url);
+    let imageLegend = {
+        facebook: {
+            friends: 'https://image.flaticon.com/icons/svg/124/124010.svg',
+            notfriends: 'https://image.flaticon.com/icons/svg/123/123717.svg' 
+        },
+        twitter: {
+            friends: 'https://image.flaticon.com/icons/svg/124/124021.svg',
+            notfriends: 'https://image.flaticon.com/icons/svg/123/123728.svg'
+        },
+        lastfm: {
+            friends: 'https://image.flaticon.com/icons/svg/2111/2111489.svg',
+            notfriends: 'https://image.flaticon.com/icons/svg/2111/2111518.svg'
+        }
+    }
     fetch(url)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+        function createFriend(friendData) {
+            let friendDiv = document.createElement('div');
+            friendDiv.setAttribute('class','friend-wrapper');
+            let friendUsername = document.createElement('p');
+            friendUsername.textContent = friendData.user.username;
+            friendDiv.appendChild(friendUsername);
+            let iconsDiv = document.createElement('div');
+            let facebookIcon = document.createElement('div');
+            facebookIcon.style.width="30px";
+            facebookIcon.style.height = "30px";
+            if(friendData.networks.facebook == 'none') {
+                facebookIcon.style.backgroundColor ="gray";
+            }
+            else {
+                facebookIcon.style.backgroundImage = url(imageLegend.facebook[friendData.networks.facebook])
+            }
+
+            let twitterIcon = document.createElement('div');
+            twitterIcon.style.width="30px";
+            twitterIcon.style.height = "30px";
+            if(friendData.networks.twitter == 'none') {
+                twitterIcon.style.backgroundColor ="gray";
+            }
+            else {
+                twitterIcon.style.backgroundImage = `url(${imageLegend.twitter[friendData.networks.twitter]})`;
+            }
+
+            let lastfmIcon = document.createElement('div');
+            lastfmIcon.style.width="30px";
+            lastfmIcon.style.height = "30px";
+            if(friendData.networks.lastfm == 'none') {
+                lastfmIcon.style.backgroundColor ="gray";
+            }
+            else {
+                lastfmIcon.style.backgroundImage = `url(${imageLegend.lastfm[friendData.networks.lastfm]})`;
+            }
+
+            iconsDiv.appendChild(facebookIcon);
+            iconsDiv.appendChild(twitterIcon);
+            iconsDiv.appendChild(lastfmIcon);
+            friendDiv.appendChild(iconsDiv);
+            return friendDiv;
+        }
+        let mainDiv = document.createElement('div');
+        mainDiv.setAttribute('class','friends-wrapper');
+        for(let friendData of data) {
+            mainDiv.appendChild(createFriend(friendData));
+        }
+        let friendsContentDiv = document.getElementById('friends-content');
+        if(friendsContentDiv.childNodes.length == 0) {
+            friendsContentDiv.appendChild(mainDiv);
+        }
+        else {
+            friendsContentDiv.replaceChild(mainDiv,friendsContentDiv.childNodes[0]);
+        }
     })
 
 })
