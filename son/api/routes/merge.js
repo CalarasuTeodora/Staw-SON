@@ -9,13 +9,43 @@ router.use('/accounts',authRouter);
 router.use('/friends',friendsRouter);
 router.use('/settings',settingsRouter);
 router.get('/myfriends',async function(req,res,next) {
-    let filters = req.query.filters;
-    let search = req.query.search;
+    let filters = req.query.filters.split(',');
+    let search = req.query.search.split(',');
     const networks = ['facebook','twitter','lastfm'];
+    let filterFriendsData = function(results,filters,search) {
+        
+        if(filters.length == 0 || search.length == 0 ||filters[0] == '' || search[0] == '') {
+            return [results[0].data,results[1].data,results[2].data];
+        }
+        function filter(friendsData) {
+            return friendsData.filter(friendData => {
+                if(filters.includes('hobbies')) {
+                    for(let searchTerm of search) {
+                        if(friendData.hobbies.includes(searchTerm)) {
+                            return true;
+                        }
+                    }
+                }
+                if (filters.includes('username')) {
+                    for(let searchTerm of search) {
+                        if(searchTerm == friendData.username) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            })
+        }
+        let fb = filter(results[0].data);
+        let tw = filter(results[1].data);
+        let lf = filter(results[2].data);
+        return [fb,tw,lf];
+    }
     let computeFriendsData = function(results) {
-        let fbFriends = results[0].data;
-        let twitterFriends = results[1].data;
-        let lastfmFriends = results[2].data;
+        results = filterFriendsData(results,filters,search);
+        let fbFriends = results[0];
+        let twitterFriends = results[1];
+        let lastfmFriends = results[2];
         let userData = [];
         for(friend of fbFriends) {
             userData.push({
@@ -73,6 +103,26 @@ router.get('/myfriends',async function(req,res,next) {
                     user.networks[network] = 'none';
                 }
             }
+        }
+        if(filters.includes('network') && (search.includes('facebook') || search.includes('twitter') || search.includes('lastfm'))) {
+            let networkFilters = [];
+            if(search.includes('facebook')) {
+                networkFilters.push('facebook');
+            }
+            if(search.includes('twitter')) {
+                networkFilters.push('twitter');
+            }
+            if(search.includes('lastfm')) {
+                networkFilters.push('lastfm');
+            }
+            userData = userData.filter(user => {
+                for(let net of networkFilters) {
+                    if(user.networks[net] != 'friends') {
+                        return false;
+                    }
+                }
+                return true;
+            })
         }
         return userData;
     }
