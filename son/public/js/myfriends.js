@@ -2,18 +2,12 @@ const form = document.getElementById('searchform');
 form.addEventListener('submit',event => {
     event.preventDefault();
     let search = form['searchbar'].value;
-    const hobbies = form['hobbies'].checked;
-    const username = form['username'].checked;
-    const network = form['socialnetwork'].checked;
+    const hobbies = form['filter'].checked;
     let filters = [];
-    if(hobbies) {
-        filters.push('hobbies');
-    }
-    if(username) {
-        filters.push('username');
-    }
-    if(network) {
-        filters.push('network');
+    if(Array.from(document.querySelectorAll('input')).some(el => {
+        return el.checked;
+    })) {
+        filters.push(document.querySelector('input[name="filter"]:checked').value);
     }
     filters = filters.join(',');
 
@@ -45,6 +39,7 @@ form.addEventListener('submit',event => {
             friendUsername.textContent = friendData.user.username;
             friendDiv.appendChild(friendUsername);
             let iconsDiv = document.createElement('div');
+            iconsDiv.setAttribute('class','icons-wrapper');
             let facebookIcon = document.createElement('div');
             facebookIcon.style.width="30px";
             facebookIcon.style.height = "30px";
@@ -74,7 +69,9 @@ form.addEventListener('submit',event => {
             else {
                 lastfmIcon.style.backgroundImage = `url(${imageLegend.lastfm[friendData.networks.lastfm]})`;
             }
-
+            facebookIcon.setAttribute('class','networkIcon');
+            twitterIcon.setAttribute('class','networkIcon');
+            lastfmIcon.setAttribute('class','networkIcon');
             iconsDiv.appendChild(facebookIcon);
             iconsDiv.appendChild(twitterIcon);
             iconsDiv.appendChild(lastfmIcon);
