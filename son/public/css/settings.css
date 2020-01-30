@@ -1,0 +1,250 @@
+body {
+    background: url("../img/2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.menu {
+    width: 250px;
+
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(1, 1, 1, 0.4);
+    overflow-x: hidden;
+    padding-top: 60px;
+    mix-blend-mode: darken;
+    align-content: center;
+    text-align: center;
+
+
+}
+
+.menu img {
+    border-radius: 50%;
+    width: 50%;
+}
+
+.menu h2 {
+    color: white;
+    margin-top: 4px;
+    margin-bottom: 24px;
+}
+
+.menu i:before {
+    margin: 8px;
+    color: white;
+    font-size: 24px;
+
+}
+
+.menu a {
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    margin: 24px 4px;
+
+}
+
+.menuItem {
+    text-align: left;
+    margin: 32px 8px;
+}
+
+.menu a:hover {
+    color: #f1f1f1;
+}
+
+.menu hr {
+    margin-top: 32px;
+    border: 1px solid white;
+    width: 80%;
+    opacity: 0.5;
+}
+
+.menuItem:last-child {
+    position: absolute;
+    bottom: 4%;
+}
+
+hr:last-of-type {
+    margin-top: 120px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .menu {
+        padding-top: 15px;
+    }
+
+    .menu a {
+        font-size: 16px;
+    }
+
+    .menu h2 {
+        font-size: 24px;
+    }
+
+}
+
+#content {
+    flex-grow: 1;
+}
+
+#content #logo {
+    height: 8%;
+    margin: 16px;
+    float: right;
+
+}
+#content h2{
+    color:#272545;
+    margin-top:32px;
+
+}
+#content #msg{
+    background-color:white;
+    padding:8px 16px;
+    padding-right:80px;
+    margin-left:12px;
+    border-radius: 50px;
+    opacity: 0.65;
+}
+
+#graphs {
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    height:auto;
+    margin-left: 5vh;
+}
+
+#hob{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    height:auto;
+    margin-left: 5vh;
+    margin-top: 5vh;
+}
+
+.graph{
+    background-color: rgba(255, 255, 255, 0.25);
+    height:100%;
+    width:45%;
+    margin:16px;
+    padding-top:0px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  
+    
+}
+
+.graph h2{
+    
+    margin-top:0px !important;
+    margin-left:24px;
+    color:white !important;
+    
+}
+
+.graphTab{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px ;
+    margin-top:0px ;
+    background-color:#272545 ;
+    width:100% ;
+   
+    line-height:50px; 
+    vertical-align:middle
+    
+    
+}
+
+label{
+    color: white;
+    margin-left: 0vh;
+}
+
+div{
+    color:white;
+    width: 50vh;
+}
+
+.button{
+    background: #CC0066;
+    border: 2px solid #CC0066;
+    color: white;
+    padding: 12px 25px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 2vh;
+    border-radius:50px;
+}
+
+.sendhobbies{
+    margin-top:2vh ;
+    background: #CC0066;
+    border: 2px solid #CC0066;
+    color: white;
+    padding: 12px 25px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 2vh;
+    border-radius:50px;
+    
+}
+
+.textbox input {
+    border-radius: 50px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    background-color: rgba(255, 255, 255, 0.15);
+    height:15px;
+    padding:16px;
+    margin-top:16px;
+    width:80%;
+
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Open Sans';
+    font-size: 16px;
+    padding: 16px;
+
+}
+
+input{
+    border-radius: 20px;
+    height:15px;
+    padding: 5px;
+    margin-top:16px;
+    width: 20%;
+}
+
+#user p{
+    color:#CC0066;
+    font-size: 15px;
+    font-weight:400;
+    
+}

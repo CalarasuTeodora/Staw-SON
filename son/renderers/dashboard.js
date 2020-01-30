@@ -41,7 +41,7 @@ module.exports = function(data) {
             <br>
         </div>
         <div class=menuItem>
-            <i class="flaticon-adjust"></i><a href="#" style="display:inline">Settings</a>
+            <i class="flaticon-adjust"></i><a href="/settings" style="display:inline">Settings</a>
             <br>
         </div>
         <hr>
