@@ -15,6 +15,9 @@ body {
     background-attachment: fixed;
 }
 
+.sigma-mouse{
+    height:800px
+}
 
 #export {
     margin-top:12px;
@@ -26,7 +29,7 @@ body {
     border-right-style: hidden;
     border-left-style: hidden;
     border-bottom-style: hidden;
-    font-size: 20px;
+    font-size: 15px;
     color: white;
     font-weight: 600;
     background-color:#CC0066;
@@ -41,7 +44,7 @@ body {
     border-right-style: hidden;
     border-left-style: hidden;
     border-bottom-style: hidden;
-    font-size: 20px;
+    font-size: 15px;
     color: white;
     font-weight: 600;
     background-color:#CC0066;
@@ -50,12 +53,12 @@ body {
 #export3 {
     margin-left: 20px;
     padding:12px;
-    border-radius:25px;
+    border-radius:15px;
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
     border-bottom-style: hidden;
-    font-size: 20px;
+    font-size: 15px;
     color: white;
     font-weight: 600;
     background-color:#CC0066;

@@ -114,7 +114,7 @@ router.get('/new_better_best/', async function (req, res) {
                 });
                 break;
             case 'lastfm':
-                friends = await getLastFmFriends(user.accounts.get('lastfm'), 0, 3, {
+                friends = await getLastFmFriends(user.accounts.get('lastfm'), 0, 4, {
                     name: user.accounts.get('lastfm'),
                     image: '',
                     friends: []

@@ -61,6 +61,7 @@ module.exports = function(data) {
                 <div class="graphTab"><h2>Div Title</h2></div>
                 <div id="graph-container">
                 
+                
            
                 </div>
             </div>
