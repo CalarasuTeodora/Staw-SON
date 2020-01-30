@@ -68,10 +68,10 @@ exports.twitterReturn = function (req, res, next) {
 
 exports.twitterInfo = function (req, res) {
     var client = new Twitter({
-        consumer_key: 'IpMP87uFLlMHTQD832S7uQIaF',
-        consumer_secret: 'eyQ7AcdJiYA8XFDLpP5NOFqSLOHnB2xOFP2pq4zuwO9Xd8B0Zi',
-        access_token_key: '1134355939782549504-Twu0BNVtzPhVRInZedM4ISiPO1b0k3',
-        access_token_secret: 'pK02kg5lfFxwHJm2HLsvLvOq6wJr0yWf1jZM16CZgtHJs'
+        consumer_key: process.env.TWITTER_CONSUMER_KEY,
+        consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+        access_token_key: process.env.TWITTER_ACCESS_TOKEN,
+        access_token_secret: process.env.TWITTER_ACCESS_SECRET
       });
       
       var params = {user_id: req.user.id};

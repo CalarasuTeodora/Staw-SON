@@ -15,6 +15,71 @@ body {
     background-attachment: fixed;
 }
 
+
+#export {
+    margin-top:12px;
+    padding:12px;
+    margin-left:1000px;
+    margin-right:24px;
+    border-radius: 25px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    font-size: 24px;
+ 
+}
+
+#export2 {
+
+    padding:12px;
+
+    border-radius:25px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    font-size: 24px;
+
+}
+
+#fb{
+    margin-left:24px;
+    margin-right:12px;
+    padding:12px;
+    width:140px;
+    border-radius:25px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    font-size: 24px;
+
+}
+
+#lastfm{
+    padding:12px;
+    width:140px;
+    margin-right:12px;
+    border-radius:25px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    font-size: 24px;
+}
+
+#twitter{
+    padding:12px;
+    width:140px;
+    margin-right:12px;
+    border-radius:25px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    font-size: 24px;
+}
 .menu {
     width: 250px;
 
@@ -136,11 +201,11 @@ hr:last-of-type {
 .graph{
     background-color: rgba(255, 255, 255, 0.25);
     height:100%;
-    width:45%;
+    width:100%;
     margin:16px;
     padding-top:0px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-radius: 20px;
+
   
     
 }
