@@ -172,12 +172,34 @@ async function getFriends(net) {
         graph: g
     });
 
+    
+
     s.addRenderer({
         container: 'graph-container',
         type: 'canvas'
     });
 
     s.refresh();
+
+    var noverlapListener = s.configNoverlap({
+        nodeMargin: 0.5,
+        scaleNodes: 1.05,
+        gridSize: 75,
+        easing: 'quadraticInOut', 
+        duration: 2000   
+      });
+      // Bind the events:
+      noverlapListener.bind('start stop interpolate', function(e) {
+        console.log(e.type);
+        if(e.type === 'start') {
+          console.time('noverlap');
+        }
+        if(e.type === 'interpolate') {
+          console.timeEnd('noverlap');
+        }
+      });
+      // Start the layout:
+      s.startNoverlap();
 }
 
 
