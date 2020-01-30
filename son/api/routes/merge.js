@@ -122,7 +122,6 @@ router.get('/myfriends',async function(req,res,next) {
             userData = userData.filter(user => {
                 for(let net of networkFilters) {
                     if(user.networks[net] != 'friends') {
-                        console.log(user);
                         return false;
                     }
                 }

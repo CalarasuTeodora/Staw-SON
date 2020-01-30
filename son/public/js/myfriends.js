@@ -47,7 +47,7 @@ form.addEventListener('submit',event => {
                 facebookIcon.style.backgroundColor ="gray";
             }
             else {
-                facebookIcon.style.backgroundImage = url(imageLegend.facebook[friendData.networks.facebook])
+                facebookIcon.style.backgroundImage = `url(${imageLegend.facebook[friendData.networks.facebook]})`;
             }
 
             let twitterIcon = document.createElement('div');
