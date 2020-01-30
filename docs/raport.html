@@ -28,7 +28,7 @@
             SON reprezinta o aplicatie de tip Web care permite cautarea de profile de utilizatori de pe diverse site-uri sociale in vederea realizarii si vizualizarii grafului retelei sociale a unui anumit utilizator. 
         </p>
         <p>
-            De asemenea, se ofera si posibilitatea de cautare avansata pe baza unor criterii multiple(nume, varsta, localizare, etc.) cat si sugerarea adaugarii utilizatorilor bazate pe relatiile curente de prietenie.
+            De asemenea, se ofera si posibilitatea de cautare avansata pe baza unor criterii multiple(nume, retea sociala si hobby-uri) cat si sugerarea adaugarii utilizatorilor bazate pe relatiile curente de prietenie.
         </p>
     </section>
 
@@ -42,9 +42,9 @@
                 <ol type="a">
                     <li>Are acces la dashboard</li>
                     <li>Poate sa isi adauge conturi de pe diverse platforme sociale</li>
-                    <li>Poate sa adauge prieteni de pe alte platforme sociale</li>
                     <li>Poate sa vada graful FOAF (Friend Of A Friend)</li>
                     <li>Poate sa vada lista prietenilor</li>
+                    <li>Poate sa isi adauge hobby-uri</li>
                     <li>Poate sa aplice diverse filtre pentru o cautare avansata</li>
                     <li>Poate sa se delogheze</li>
 
@@ -52,7 +52,7 @@
             </li>
         </ol>
         <img src="diag1.png" alt="diag1" width="800"> <br>
-        <img src="diag2.png" alt="diag2" width="800">
+        <img src="diag2.png" alt="diag2" width="800"> 
     </section>
 
     <section id="authentification">
@@ -97,23 +97,28 @@
             <li> Are suport pentru node.js </li>
 
         </ol>
+        <p>Structura modelelor pentru baza de date: </p>
+        <img src ="friendsmodel.png" width="20%">
+        <img src ="usermodel.png" width="20%">
+        <img src ="usermodel2.png" width="20%">
         <img src="db.png" alt="database" width="900">
     </section>
 
     <section id="externalApi">
     <h2> 5. API-uri externe </h2>
-        <p>    Google Maps API - pentru filtrarea dupa localizare si geolocatie</p>
-        <p>    Facebook Graph API (pentru Facebook si Instagram) - exista posibilitatea sa nu il putem folosi din cauza ca anumite caracterestici sunt doar pentru Faceebooks Devs</p>
-        <img src="fb.png" alt="jwt" width="500">  
-        <p>    <a href="https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/overview">Twitter API</a></p></p>
-        <p>    <a href="https://www.last.fm/api/show/user.getFriends">Last.fm API</a></p>
-        <p>    <a href="https://www.last.fm/api/show/user.getFriends">LinkedIn API</a></p>
-        <p>    <a href="https://developers.pinterest.com/docs/api/users/">Pinterest API</a></p>
-        <p>    <a href="https://www.behance.net/dev/api/endpoints/2#users-get-59">Behance API</a></p>
-        <p>    <a href="https://developer.github.com/v3/users/#get-all-users">GitHub API</a></p>
-        <p>    <a href="https://www.tumblr.com/docs/en/api/v2#userfollowing--retrieve-the-blogs-a-user-is-following">Tumblr API</a></p>
-        <p>    <a href="https://discordapp.com/developers/docs/resources/user">Discord API</a></p>
-        
+
+       <p>Facebook API</p>
+       <p>Twitter API</p>
+       <p>Last.fm API</p>
+       <p> Din cauza politicilor de confidentialitate, API-urile nu returnau adresa de e-mail a userilor. 
+           Din aceasta cauza am optat sa facem filtrarea si gasirea prietenilor folosind id-ul fiecarui user.</p>
+        Pentru realizarea grafurilor sociale am folosit sigma js.
+        <p>Da grafurile sunt făcute prin fetch unirea recursiva a prietenilor. 
+            Astfel după ce obtinem prietenii user ului root vor obține și pentru aceștia prietenii. 
+            Se va face acest lucru în mod recursiv pana la un anumit depth ce tine cont de limitările api-ul platformei sociale respectove(ex Twitter permite doar 15 call uri in 15 minute)</p>
+        <p>Root ul e în poziția (x:0, y:0) iar celelalte vor avea poziția calculata relativ la nodul părinte, 
+            folosind funcția cosinus și respectiv sinus, generând astfel nodurile prietene pentru un nod n, pe un cerc, fiind egal depărtate. 
+           <br/> Pentru optimizări se rulează o funcție de noOverlap pusa la dispoziție de sigma js</p>
     </section>
 
     <section>
