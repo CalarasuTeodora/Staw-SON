@@ -41,6 +41,10 @@ form.addEventListener('submit',event => {
             let iconsDiv = document.createElement('div');
             iconsDiv.setAttribute('class','icons-wrapper');
             let facebookIcon = document.createElement('div');
+            facebookIcon.addEventListener('click',event => {
+                if(friendData.user.urls['facebook'])
+                window.open(friendData.user.urls['facebook']);
+            })
             facebookIcon.style.width="30px";
             facebookIcon.style.height = "30px";
             if(friendData.networks.facebook == 'none') {
@@ -51,6 +55,12 @@ form.addEventListener('submit',event => {
             }
 
             let twitterIcon = document.createElement('div');
+            twitterIcon.addEventListener('click',event => {
+                console.log(1);
+                console.log(friendData.user.urls);
+                if(friendData.user.urls['twitter'])
+                window.open(friendData.user.urls['twitter']);
+            })
             twitterIcon.style.width="30px";
             twitterIcon.style.height = "30px";
             if(friendData.networks.twitter == 'none') {
@@ -61,6 +71,10 @@ form.addEventListener('submit',event => {
             }
 
             let lastfmIcon = document.createElement('div');
+            lastfmIcon.addEventListener('click',event => {
+                if(friendData.user.urls['lastfm'])
+                window.open(friendData.user.urls['lastfm']);
+            })
             lastfmIcon.style.width="30px";
             lastfmIcon.style.height = "30px";
             if(friendData.networks.lastfm == 'none') {

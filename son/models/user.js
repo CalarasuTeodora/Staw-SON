@@ -36,6 +36,11 @@ const userSchema = new Schema({
     of: String,
     default: {}
   },
+  urls: {
+    type: Map,
+    of: String,
+    default: {}
+  },
   hobbies: [
       {
           type: String,
