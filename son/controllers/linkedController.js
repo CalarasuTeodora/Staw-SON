@@ -29,6 +29,7 @@ async function syncTwitter(userId, twitterUser, twitterData) {
     try {
         const user = await User.findById(userId);
         user.accounts.set('twitter', twitterUser.id);
+        user.urls.set('twitter',"https://twitter.com/" + twitterUser.id);
         const results = await Promise.all(twitterData.map(friend => {
             return Friend.findOneAndUpdate({
                 userId: user.id,
@@ -89,6 +90,7 @@ async function syncLastFM(userId, lastFMUser, lastFMData) {
     try {
         const user = await User.findById(userId);
         user.accounts.set('lastfm', lastFMUser.name);
+        user.urls.set('lastfm',"https://lastfm.com/user/" + lastFMUser.name);
         const results = await Promise.all(lastFMData.map(friend => {
             return Friend.findOneAndUpdate({
                 userId: user.id,
@@ -163,6 +165,7 @@ exports.lastFMInfo = function (req, res) {
 async function syncFB(user, fbData) {
     try {
         user.accounts.set('facebook', fbData.id);
+        console.log(fbData);
         const results = await Promise.all(fbData.friends.data.map(friend => {
             return Friend.findOneAndUpdate({
                 userId: user.id,
