@@ -15,9 +15,8 @@ module.exports = function(data) {
         <div id="rightPanel">
             <img src="/static/img/logo.svg" class="logo" alt="logo">
             <img src="/static/img/people.svg" id="people" alt="people">
-            <h1>A TITLE HERE</h1>
-            <h3>Some shitty ass text over here.
-                And maybe here</h3>
+            <h1>CONNECT WITH YOUR FRIENDS!</h1>
+            <h3>The best application we could make... Sorry</h3>
         </div>
     
         <div id="leftPanel">

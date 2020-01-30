@@ -55,6 +55,7 @@ body {
 }
 
 #leftPanel {
+    
     flex-grow: 3;
     background-image: linear-gradient(to top, #171A35, #0C0E26);
     height: 100%;
@@ -71,6 +72,7 @@ body {
     font-family: 'Open Sans';
     font-weight: 800;
     font-size: 32px;
+    margin-top: 20%;
 }
 
 input {
