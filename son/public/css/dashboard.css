@@ -13,10 +13,15 @@ body {
     height: 100vh;
     background-position: center center;
     background-attachment: fixed;
-}
+    overflow: hidden;
 
-.sigma-mouse{
-    height:800px
+}
+html{overflow: hidden;
+}
+.sigma-scene, .sigma-labels, .sigma-mouse {
+    position: absolute;
+    width: 100% !important;;
+    height: 800px !important;;
 }
 
 #export {
