@@ -26,18 +26,14 @@ module.exports = function(data) {
     <div id="menu" class="menu">
         <img src='/static/img/soraka.png'>
         <h2>${data.username}</h2>
-        <i class="flaticon-social-media"></i>
-        <i class="flaticon-instagram"></i>
-        <i class="flaticon-linkedin"></i>
-
         <hr>
 
         <div class=menuItem>
-            <i class="flaticon-dashboard"></i><a href="#" style="display:inline">Dashboard</a>
+            <i class="flaticon-dashboard"></i><a href="/" style="display:inline">Dashboard</a>
             <br>
         </div>
         <div class=menuItem>
-            <i class="flaticon-user"></i><a href="#" style="display:inline">Friends</a>
+            <i class="flaticon-user"></i><a href="/myfriends" style="display:inline">Friends</a>
             <br>
         </div>
         <div class=menuItem>
@@ -126,7 +122,7 @@ module.exports = function(data) {
 
 <script>
 async function fetchFriend(net) {
-    var result = await fetch('http://localhost:3000/api/friends?network=' + net)
+    var result = await fetch('http://localhost:3000/api/friends/new_better_best?network=' + net)
     var json = await result.json()
     return json
 }

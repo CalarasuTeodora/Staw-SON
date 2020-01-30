@@ -23,13 +23,7 @@ module.exports = function(data) {
         <div id="leftPanel">
             <h1>SIGN UP</h1>
     
-            <div id="buttonLogin">
-                <button class="buttonLogin">Facebook</button>
-                <button class="buttonLogin">Insta</button>
-                <button class="buttonLogin">Another1</button>
-                <button class="buttonLogin">Another2</button>
-            </div>
-            <h3>or </h3>
+
             <form id="register">
                 <div class="textbox">
                     <input type="email" name="email" id="email" placeholder="Email" required>

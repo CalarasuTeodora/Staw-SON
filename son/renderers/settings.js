@@ -13,7 +13,7 @@ module.exports = function(data) {
     <title>Dashboard</title>
     <link rel="stylesheet" href="/static/css/settings.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="icon/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="/static/icon/flaticon.css">
     
 </head>
 
@@ -21,18 +21,15 @@ module.exports = function(data) {
     <div id="menu" class="menu">
         <img src='/static/img/soraka.png'>
         <h2>${data.username}</h2>
-        <i class="flaticon-social-media"></i>
-        <i class="flaticon-instagram"></i>
-        <i class="flaticon-linkedin"></i>
 
         <hr>
 
         <div class=menuItem>
-            <i class="flaticon-dashboard"></i><a href="#" style="display:inline">Dashboard</a>
+            <i class="flaticon-dashboard"></i><a href="/" style="display:inline">Dashboard</a>
             <br>
         </div>
         <div class=menuItem>
-            <i class="flaticon-user"></i><a href="#" style="display:inline">Friends</a>
+            <i class="flaticon-user"></i><a href="/myfriends" style="display:inline">Friends</a>
             <br>
         </div>
         <div class=menuItem>
@@ -48,7 +45,12 @@ module.exports = function(data) {
     <div id="content">
         <img src="/static/img/logo.svg" id="logo">
         <h2><span id="msg">Welcome back, ${data.username}!</span></h2>
+        <a href="/linked/fb/login" class="button">Link facebook</a>
+        <a href="/linked/twitter/login" class="button">Link twitter</a>
+        <a href="/linked/lastfm/login" class="button">Link lastfm</a>
         <div id="graphs">
+        
+
             <form id="user">
                 <div class="textbox">
                     <label for="username">Chage your username:</label> <br/>

@@ -16,8 +16,7 @@ module.exports = function(data) {
             <img src="/static/img/logo.svg" class="logo" alt="logo">
             <img src="/static/img/people.svg" id="people" alt="people">
             <h1>A TITLE HERE</h1>
-            <h3>Some shitty ass text over here.
-                And maybe here</h3>
+            <h3>The best application we could make... Sorry</h3>
         </div>
     
         <div id="leftPanel">
@@ -35,14 +34,6 @@ module.exports = function(data) {
             </form>
             <p>You don't have an account?</p>
             <h4><a href="/register">Sign up</a></h4>
-            <h3>or connect with</h3>
-    
-            <div id="buttonLogin">
-                <button class="buttonLogin" onclick="location.href='/linked/fb/login';">Facebook</button>
-                <button class="buttonLogin">Insta</button>
-                <button class="buttonLogin">Another1</button>
-                <button class="buttonLogin">Another2</button>
-            </div>
     
         </div>
         <script type="application/javascript" src="/static/js/loginviaform.js"></script>
