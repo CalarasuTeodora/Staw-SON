@@ -112,7 +112,7 @@ hr:last-of-type {
 }
 #content h2{
     color:#272545;
-    margin-top:32px;
+    /* margin-top:32px; */
 
 }
 #content #msg{
@@ -121,7 +121,7 @@ hr:last-of-type {
     padding-right:80px;
     margin-left:12px;
     border-radius: 50px;
-    opacity: 0.65;
+    opacity: 0.65;  
 }
 
 #graphs {
@@ -140,7 +140,7 @@ hr:last-of-type {
     flex-wrap: wrap;
     height:auto;
     margin-left: 5vh;
-    margin-top: 5vh;
+    margin-top: 3vh;
 }
 
 .graph{
@@ -179,6 +179,12 @@ hr:last-of-type {
 label{
     color: white;
     margin-left: 0vh;
+}
+
+div #graphs{
+    color:white;
+    width: 50vh;
+    margin-top:3vh;
 }
 
 div{
@@ -248,3 +254,8 @@ input{
     font-weight:400;
     
 }
+
+h2 {
+    margin-left: 3vh;
+}
+

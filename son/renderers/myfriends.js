@@ -40,13 +40,16 @@ module.exports = function(data) {
 
     <div id="content-v2">
         <form id="searchform">
-            <input type="text" name="searchbar" placeholder="Search friends by hobbies, username, social network ..."></input>
-            <input type="radio" name="filter" value="hobbies"></input>
+            <input type="text" name="searchbar" placeholder="Search friends by hobbies, username, social network ..."></input> <br>
             <label for="hobbies">Hobbies</label>
-            <input type="radio" name="filter" value="username"></input>
+            <input type="radio" name="filter" value="hobbies"></input>
+            <br/>
             <label for="username">Username</label>
-            <input type="radio" name="filter" value="network"></input>
+            <input type="radio" name="filter" value="username"></input>
+            <br/>
             <label for="network">Network</label>
+            <input type="radio" name="filter" value="network"></input>
+            <br/>
             <input type="submit" value="Search"></input>
         </form>
         <div id="friends-content">

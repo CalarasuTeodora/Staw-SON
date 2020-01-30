@@ -44,13 +44,13 @@ module.exports = function(data) {
 
     <div id="content">
         <img src="/static/img/logo.svg" id="logo">
-        <h2><span id="msg">Welcome back, ${data.username}!</span></h2>
+        <h2><span id="msg">Welcome back, ${data.username}!</span></h2> <br/>
         <a href="/linked/fb/login" class="button">Link facebook</a>
         <a href="/linked/twitter/login" class="button">Link twitter</a>
         <a href="/linked/lastfm/login" class="button">Link lastfm</a>
+        <br/>
         <div id="graphs">
-        
-
+        <br/>
             <form id="user">
                 <div class="textbox">
                     <label for="username">Chage your username:</label> <br/>
