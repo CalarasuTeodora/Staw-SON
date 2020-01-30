@@ -25,8 +25,8 @@ form.addEventListener('submit',event => {
             notfriends: 'https://image.flaticon.com/icons/svg/123/123728.svg'
         },
         lastfm: {
-            friends: 'https://image.flaticon.com/icons/svg/2111/2111489.svg',
-            notfriends: 'https://image.flaticon.com/icons/svg/2111/2111518.svg'
+            friends: 'https://image.flaticon.com/icons/svg/143/143664.svg',
+            notfriends: 'https://image.flaticon.com/icons/svg/121/121546.svg'
         }
     }
     fetch(url)
